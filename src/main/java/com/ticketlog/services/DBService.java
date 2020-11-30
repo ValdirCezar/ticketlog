@@ -16,7 +16,7 @@ public class DBService {
 	private EstadoRepository estadoRepository;
 
 	public void instantiateTestDatabase() throws ParseException {
-		Estado estado1 = new Estado(null, "Rio Grande do Sil");
+		Estado estado1 = new Estado(null, "Rio Grande do Sul");
 		Estado estado2 = new Estado(null, "Santa Catarina");
 		Estado estado3 = new Estado(null, "Panará");
 
