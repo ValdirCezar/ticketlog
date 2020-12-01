@@ -10,7 +10,7 @@ public class EstadoDTO implements Serializable {
 	
 	private Integer id;
 	private String nome;
-	private Long populacao;
+	private Integer populacao;
 	private Double custoEstadoUS;
 
 	public EstadoDTO() {
@@ -41,11 +41,11 @@ public class EstadoDTO implements Serializable {
 		this.nome = nome;
 	}
 
-	public Long getPopulacao() {
+	public Integer getPopulacao() {
 		return populacao;
 	}
 
-	public void setPopulacao(Long populacao) {
+	public void setPopulacao(Integer populacao) {
 		this.populacao = populacao;
 	}
 

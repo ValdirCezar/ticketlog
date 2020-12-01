@@ -20,16 +20,19 @@ public class CidadeService {
 	@Autowired
 	private EstadoRepository estadoRepository;
 	
+
 	public Cidade insert(Cidade obj, Integer idEstado) {
 		Estado estado = estadoService.findById(idEstado);
 		obj.setId(null);
 		obj.setEstado(estado);
 		obj = repository.save(obj);
 		estado.getCidades().add(obj);
+		estado.setPopulacao(obj.getPopulacao() + estado.getPopulacao());
 		estadoRepository.save(estado);
 		return obj;
 	}
-	
+
+
 	public List<Cidade> findAllByEstado(Integer id, Double ValorDoDolar) {
 		Double valorDoDolar = ValorDoDolar;
 		Double custoPorCidadao = 123.45 * valorDoDolar;

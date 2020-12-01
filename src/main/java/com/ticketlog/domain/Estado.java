@@ -19,7 +19,7 @@ public class Estado implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	private Long populacao;
+	private Integer populacao;
 	private Double custoEstadoUS;
 
 	@OneToMany(mappedBy = "estado")
@@ -51,11 +51,11 @@ public class Estado implements Serializable {
 		this.nome = nome;
 	}
 
-	public Long getPopulacao() {
+	public Integer getPopulacao() {
 		return populacao;
 	}
 
-	public void setPopulacao(Long populacao) {
+	public void setPopulacao(Integer populacao) {
 		this.populacao = populacao;
 	}
 

@@ -1,6 +1,5 @@
 package com.ticketlog.services;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -30,8 +29,10 @@ public class EstadoService {
 		
 		for (Estado estado : list) {
 			estado.setCustoEstadoUS(obterValorGastoPeloEstado(estado.getCidades()));
+			estado.setPopulacao(obterPopulacaoDoEstado(estado.getCidades()));
 		}
 		
+		repository.saveAll(list);
 		List<EstadoDTO> listDto = list.stream().map(obj -> new EstadoDTO(obj)).collect(Collectors.toList());
 		return listDto;
 	}
@@ -54,10 +55,20 @@ public class EstadoService {
 	
 	public Double obterValorGastoPeloEstado(List<Cidade> cidades) {
 		Double valorTotal = 0.0;
+		Integer populacaoTotal = 0;
 		for (Cidade cidade : cidades) {
 			valorTotal += cidade.getCustoCidadeUS();
+			populacaoTotal += cidade.getPopulacao();
 		}
 		return valorTotal;
+	}
+	
+	public Integer obterPopulacaoDoEstado(List<Cidade> cidades) {
+		Integer populacaoTotal = 0;
+		for (Cidade cidade : cidades) {
+			populacaoTotal += cidade.getPopulacao();
+		}
+		return populacaoTotal;
 	}
 
 }
