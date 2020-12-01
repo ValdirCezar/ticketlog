@@ -23,6 +23,8 @@ import com.ticketlog.services.CidadeService;
 @CrossOrigin("*")
 public class CidadeResource {
 	
+	// !!!!!!! Validar a inserção de cidades com o mesmo nome
+	
 	// !!!!!!! Implementar os tratamentos de exceção após finalizar a api
 	
 	@Autowired
