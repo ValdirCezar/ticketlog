@@ -20,8 +20,10 @@ public class Cidade implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
-	private Long populacao;
+	private Integer populacao;
 	private Double custoCidadeUS;
+
+	private Double custoPorCidadaoAoEstado = 123.45; // Valor em Dollar americano
 
 	@JsonIgnore
 	@ManyToOne
@@ -32,10 +34,11 @@ public class Cidade implements Serializable {
 		super();
 	}
 
-	public Cidade(Integer id, String nome) {
+	public Cidade(Integer id, String nome, Integer populacao) {
 		super();
 		this.id = id;
 		this.nome = nome;
+		this.populacao = populacao;
 	}
 
 	public Integer getId() {
@@ -54,11 +57,11 @@ public class Cidade implements Serializable {
 		this.nome = nome;
 	}
 
-	public Long getPopulacao() {
+	public Integer getPopulacao() {
 		return populacao;
 	}
 
-	public void setPopulacao(Long populacao) {
+	public void setPopulacao(Integer populacao) {
 		this.populacao = populacao;
 	}
 
@@ -76,6 +79,14 @@ public class Cidade implements Serializable {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+
+	public Double getCustoPorCidadaoAoEstado() {
+		return custoPorCidadaoAoEstado;
+	}
+
+	public void setCustoPorCidadaoAoEstado(Double custoPorCidadaoAoEstado) {
+		this.custoPorCidadaoAoEstado = custoPorCidadaoAoEstado;
 	}
 
 	@Override

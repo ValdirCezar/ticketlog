@@ -24,10 +24,10 @@ public class DBService {
 		Estado estado2 = new Estado(null, "Santa Catarina");
 		Estado estado3 = new Estado(null, "Panará");
 		
-		Cidade c1 = new Cidade(null, "Curitiba");
-		Cidade c2 = new Cidade(null, "Londrina");
-		Cidade c3 = new Cidade(null, "Maringá");
-		Cidade c4 = new Cidade(null, "Assaí");
+		Cidade c1 = new Cidade(null, "Curitiba", 1000);
+		Cidade c2 = new Cidade(null, "Londrina", 1500);
+		Cidade c3 = new Cidade(null, "Maringá", 500);
+		Cidade c4 = new Cidade(null, "Assaí", 50001);
 		
 		estado3.getCidades().addAll(Arrays.asList(c1, c2, c3, c4));
 		
