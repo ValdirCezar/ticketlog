@@ -21,5 +21,6 @@ public class EstadoService {
 		List<EstadoDTO> listDto = list.stream().map(obj -> new EstadoDTO(obj)).collect(Collectors.toList());
 		return listDto;
 	}
+	
 
 }
