@@ -22,7 +22,7 @@ public class DBService {
 	public void instantiateTestDatabase() throws ParseException {
 		Estado estado1 = new Estado(null, "Rio Grande do Sul");
 		Estado estado2 = new Estado(null, "Santa Catarina");
-		Estado estado3 = new Estado(null, "Panará");
+		Estado estado3 = new Estado(null, "Paraná");
 		
 		Cidade c1 = new Cidade(null, "Curitiba", 1000);
 		Cidade c2 = new Cidade(null, "Londrina", 1500);

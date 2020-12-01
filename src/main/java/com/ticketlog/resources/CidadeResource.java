@@ -28,9 +28,9 @@ public class CidadeResource {
 	@Autowired
 	private CidadeService service;
 	
-	@PostMapping("/estado={id}")
-	public ResponseEntity<Cidade> insert(@RequestBody Cidade obj) {
-		Cidade newObj = service.insert(obj);
+	@PostMapping("/estado={idEstado}")
+	public ResponseEntity<Cidade> insert(@PathVariable Integer idEstado, @RequestBody Cidade obj) {
+		Cidade newObj = service.insert(obj, idEstado);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(newObj);
 	}

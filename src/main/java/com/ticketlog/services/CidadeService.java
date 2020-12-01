@@ -6,17 +6,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ticketlog.domain.Cidade;
+import com.ticketlog.domain.Estado;
 import com.ticketlog.repositories.CidadeRepository;
+import com.ticketlog.repositories.EstadoRepository;
 
 @Service
 public class CidadeService {
 	
 	@Autowired
 	private CidadeRepository repository;
+	@Autowired
+	private EstadoService estadoService;
+	@Autowired
+	private EstadoRepository estadoRepository;
 	
-	public Cidade insert(Cidade obj) {
+	public Cidade insert(Cidade obj, Integer idEstado) {
+		Estado estado = estadoService.findById(idEstado);
 		obj.setId(null);
-		return repository.save(obj);
+		obj.setEstado(estado);
+		obj = repository.save(obj);
+		estado.getCidades().add(obj);
+		estadoRepository.save(estado);
+		return obj;
 	}
 	
 	public List<Cidade> findAllByEstado(Integer id, Double ValorDoDolar) {
@@ -39,6 +50,5 @@ public class CidadeService {
 	public void deleteById(Integer id) {
 		repository.deleteById(id);
 	}
-
 
 }

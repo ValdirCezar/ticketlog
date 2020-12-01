@@ -1,6 +1,7 @@
 package com.ticketlog.services;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,9 @@ public class EstadoService {
 		return listDto;
 	}
 	
+	public Estado findById(Integer id) {
+		Optional<Estado> obj = repository.findById(id);
+		return obj.orElse(null);
+	}
 
 }
