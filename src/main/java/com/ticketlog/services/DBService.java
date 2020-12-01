@@ -28,6 +28,7 @@ public class DBService {
 		Cidade c2 = new Cidade(null, "Londrina", 1500);
 		Cidade c3 = new Cidade(null, "Maringá", 500);
 		Cidade c4 = new Cidade(null, "Assaí", 50001);
+		Cidade c5 = new Cidade(null, "Itapoá", 1000);
 		
 		estado3.getCidades().addAll(Arrays.asList(c1, c2, c3, c4));
 		
@@ -35,9 +36,10 @@ public class DBService {
 		c2.setEstado(estado3);
 		c3.setEstado(estado3);
 		c4.setEstado(estado3);
+		c5.setEstado(estado2);
 
 		estadoRepository.saveAll(Arrays.asList(estado1, estado2, estado3));
-		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, c4));
+		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5));
 	}
 
 }
