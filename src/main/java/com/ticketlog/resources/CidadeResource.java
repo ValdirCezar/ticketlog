@@ -3,6 +3,8 @@ package com.ticketlog.resources;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,15 +25,13 @@ import com.ticketlog.services.CidadeService;
 @CrossOrigin("*")
 public class CidadeResource {
 	
-	// !!!!!!! Validar a inserção de cidades com o mesmo nome
-	
 	// !!!!!!! Implementar os tratamentos de exceção após finalizar a api
 	
 	@Autowired
 	private CidadeService service;
 	
 	@PostMapping("/estado={idEstado}")
-	public ResponseEntity<Cidade> insert(@PathVariable Integer idEstado, @RequestBody Cidade obj) {
+	public ResponseEntity<Cidade> insert(@PathVariable Integer idEstado, @Valid @RequestBody Cidade obj) {
 		Cidade newObj = service.insert(obj, idEstado);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(newObj);

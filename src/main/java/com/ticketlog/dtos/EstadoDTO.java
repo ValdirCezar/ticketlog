@@ -2,6 +2,9 @@ package com.ticketlog.dtos;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import com.ticketlog.domain.Estado;
 
 public class EstadoDTO implements Serializable {
@@ -9,7 +12,12 @@ public class EstadoDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
+	
+	@NotBlank(message = "Campo Obrigatório")
+	@Size(min = 2, max = 80, message = "Tamanho mínimo é 2 cracteres e máximo 80 caracteres")
 	private String nome;
+	
+	@NotBlank(message = "Campo Obrigatório")
 	private Integer populacao;
 	private Double custoEstadoUS;
 
