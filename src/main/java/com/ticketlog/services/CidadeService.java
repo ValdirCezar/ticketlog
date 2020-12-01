@@ -22,12 +22,18 @@ public class CidadeService {
 	
 
 	public Cidade insert(Cidade obj, Integer idEstado) {
+		List<Cidade> cidades = repository.findAllByEstado(idEstado);
+		for (Cidade cidade : cidades) {
+			if(cidade.getNome().equals(obj.getNome())) {
+				return null;
+			}
+		}
+		
 		Estado estado = estadoService.findById(idEstado);
 		obj.setId(null);
 		obj.setEstado(estado);
 		obj = repository.save(obj);
 		estado.getCidades().add(obj);
-		estado.setPopulacao(obj.getPopulacao() + estado.getPopulacao());
 		estadoRepository.save(estado);
 		return obj;
 	}
