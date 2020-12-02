@@ -1,6 +1,7 @@
 package com.ticketlog.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,10 @@ public class CidadeService {
 	@Autowired
 	private EstadoRepository estadoRepository;
 	
+	public Cidade findById(Integer id) {
+		Optional<Cidade> cidade = repository.findById(id);
+		return cidade.orElse(null);
+	}
 
 	public Cidade insert(Cidade obj, Integer idEstado) {
 		List<Cidade> cidades = repository.findAllByEstado(idEstado);

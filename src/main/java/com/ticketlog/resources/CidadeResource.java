@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.ticketlog.domain.Cidade;
+import com.ticketlog.domain.Estado;
 import com.ticketlog.services.CidadeService;
 
 @RestController
@@ -45,8 +46,12 @@ public class CidadeResource {
 	
 	@DeleteMapping("/delete={id}")
 	public ResponseEntity<Void> deleteById(@PathVariable Integer id) {
-		service.deleteById(id);
-		return ResponseEntity.noContent().build();
+		Cidade cidade = service.findById(id);
+		Estado estado = cidade.getEstado();
+		if (!estado.getNome().equals("Rio Grande do Sul")){
+			service.deleteById(id);
+		}
+			return ResponseEntity.noContent().build();
 	}
 
 }
